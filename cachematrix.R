@@ -9,7 +9,7 @@ makeCacheMatrix <- function(x = matrix()) {
     inv <<- NULL
   }
   get <- function() x
-  setinverse <- function(inverse) iv <<- inverse
+  setinverse <- function(inverse) inv <<- inverse
   getinverse <- function() inv
   list(set = set,
        get = get,
@@ -35,5 +35,4 @@ cacheSolve <- function(x, ...) {
   }else{
     message("Cannot compute inverse")
   }
-  
 }
