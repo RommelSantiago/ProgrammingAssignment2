@@ -11,10 +11,10 @@ makeCacheMatrix <- function(x = matrix()) {
   get <- function() x
   setinverse <- function(inverse) inv <<- inverse
   getinverse <- function() inv
-  list(set = set,
-       get = get,
-       setinverse = setinverse,
-       getinverse = getinverse)
+  list(set = set
+       ,get = get
+       ,setinverse = setinverse
+       ,getinverse = getinverse)
 }
 
 
@@ -27,12 +27,14 @@ cacheSolve <- function(x, ...) {
     return(inv)
   }
   data <- x$get()
-  if(nrow(data) != ncol(data)){return(message("Matrix must be square"))}
+  if(nrow(data) != ncol(data)){
+      return(message("Matrix must be square"))
+    }
   if(det(data) != 0  ){
     inv <- solve(data, ...)
     x$setinverse(inv)
     inv  
   }else{
-    message("Cannot compute inverse")
+    message("Cannot compute inverse, singular matrix")
   }
 }
